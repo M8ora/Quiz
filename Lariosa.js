@@ -16,13 +16,12 @@ const questions = [
 
     { question: "It let you draw, paint, select, and modify artwork, as well as change the view of the Stage", options: ["Tools Panel", "Tools Control", "Transform Tool"], correct: 0 },
     { question: "It is use to custom-define a brush by setting parameters of the brush such as shape and angle.", options: ["Paint Tool", "Pencil Tool", "Brush Tool"], correct: 2 },
-    { question: "It is use use Inverse kinematics (IK), a way of animating objects using bones chained into linear or branched armatures in parent-child relationships", options: ["Lasso Tool", "Subselection Tool", "Bone Tool"], correct: 2 },
+    { question: "It is an Inverse kinematics (IK), a way of animating objects using bones chained into linear or branched armatures in parent-child relationships", options: ["Lasso Tool", "Subselection Tool", "Bone Tool"], correct: 2 },
     { question: "It is use to mimic a virtual camera movement", options: ["Rotational Tool", "Camera Tool", "Transform Tool"], correct: 1 },
     { question: "It is use to draw circles and ovals.", options: ["Ellipse Tool", "Shape Tool", "Pencil Tool"], correct: 0 },
     { question: "Use this tool to draw and edit freehand lines.", options: ["Ellipse Tool", "Brush Tool", "Pencil Tool"], correct: 2 },
     { question: "It is use to draw straight and curved lines to create objects. ", options: ["Pen Tool", "Brush Tool", "Pencil Tool"], correct: 0 },
     { question: "It is use to draw squares and rectangles.", options: ["Shape Tool", "Rectangle Tool", "Square Tool"], correct: 1 },
-    { question: "It is use to scale, rotate, or skew a selection.", options: ["Selection Tool", "Subselection Tool", "Transform Tool"], correct: 2 },
     { question: "It stores the media assets that you create in the Animate authoring environment or import to use in the document.", options: ["Library Panel", "Creative Cloud Library panel", "Assets"], correct: 0 },
     { question: "It lists all the creative assets that you have stored in your libraries along with the assets that others have shared with you. ", options: ["Library Panel", "Creative Cloud Library panel", "Assets"], correct: 1 },
     { question: "This tool is use to select an entire object. Click or drag an object to enclose object with rectangular selection. ", options: ["Selection Tool", "Lasso Tool", "Subselection Tool"], correct: 0 },
@@ -53,6 +52,18 @@ const questions = [
     { question: "It is the same as Event, except that if the sound is already playing, no new instance of the sound plays.", options: ["Start", "Stream Sound", "Stop"], correct: 0 },
     { question: "It silences the specified sound.", options: ["Start", "Stream Sound", "Stop"], correct: 2 },
     { question: "This is the native sound format of Adobe® Soundbooth™", options: [".snd", ".asnd", ".sd2"], correct: 1 },
+
+    { question: "Organize and controls a documents content over time in layers and frames", options: ["Timeline Control", "Timeline", "Timeline Header"], correct: 1 },
+    { question: "Surfacing extra functionality upfront", options: ["Timeline Control", "Timeline", "Timeline Header"], correct: 0 },
+    { question: "Types of Layer View", options: ["Layer Parenting View and Multi Layer View", "Multi Layer View and Single Layer View", "Single Layer View and Layer Depth"], correct: 1 },
+    { question: "It can change the rotation and scaling of symbols or frame once you enable this", options: ["Camera Button", "Camera", "Camera Tool"], correct: 2 },
+    { question: "It displays the parenting hierarchy of layers", options: ["Layer View", "Layers Depth", "Layer Parenting view"], correct: 2 },
+    { question: "Allows you to modify the depth of active layer provided in the list", options: ["Layer view", "Layers Depth", "Layer Parenting view"], correct: 1 },
+    { question: "The core of any animation dictating each segment of time and movement.", options: ["Keyframe", "Frame", "Span Frame"], correct: 1 },
+    { question: "Frame where a new symbol instance appears in the timeline", options: ["Keyframe", "Frame", "Span Frame"], correct: 0 },
+    { question: "Frame selection allows you to select a range of frames between two keyframes with a single click", options: ["Span", "Tweened Frame span", "Static frame span"], correct: 0 },
+    { question: "You can use this type of span for animations.", options: ["Span", "Tweened frame span", "Static Frame span"], correct: 1 },
+    { question: "The platform type of character animation", options: ["HTML5 canvas", ".fla", "Actionscipt3.0", "Actionscip2.0"], correct: 0 },
 ];
 
 let currentQuestionIndex = 0;
