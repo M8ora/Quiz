@@ -1,0 +1,213 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #aac5ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 10px;
+}
+
+/* Quiz container styles */
+.quiz-container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.quiz-container h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Label and input styling */
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 180px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Hide elements */
+.hidden {
+    display: none;
+}
+
+/* Result container styles */
+#result-container {
+    margin-top: 20px;
+}
+
+#result-container h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+#score {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Styles for answer review box */
+.answer-box {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.answer-box p {
+    margin: 5px 0;
+}
+
+.answer-box p:nth-child(3) {
+    font-weight: bold;
+    color: #4CAF50; /* Green for correct answers */
+}
+
+.answer-box p:nth-child(2) {
+    font-weight: bold;
+    color: #e74c3c; /* Red for user answer (if incorrect) */
+}
+
+/* Styles for pagination controls */
+#pagination-controls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#pagination-controls button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#pagination-controls button:hover {
+    background-color: #45a049;
+}
+
+/* Restart button styling */
+#restart-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 180px;
+}
+
+#restart-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 15px 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .quiz-container h3 {
+        font-size: 1.2rem;
+    }
+
+    label {
+        font-size: 0.95rem;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 15px;
+        max-width: 100%;
+    }
+
+    #pagination-controls button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    #restart-btn {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quiz-container {
+        padding: 10px 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .quiz-container h3 {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    #pagination-controls button,
+    #restart-btn {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+}

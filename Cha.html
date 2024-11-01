@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Question Container -->
+        <div id="question-container"></div>
+        
+        <!-- Submit Button -->
+        <button id="submit-btn">Submit Answer</button>
+        
+        <!-- Result Container with Pagination and Restart Button -->
+        <div id="result-container" class="hidden">
+            <h2>Your Score: <span id="score"></span></h2>
+            <div id="review-answers"></div>
+            
+            <!-- Pagination Controls -->
+            <div id="pagination-controls">
+                <button id="prev-btn" class="hidden">Previous</button>
+                <button id="next-btn" class="hidden">Next</button>
+            </div>
+
+            <!-- Restart Button -->
+            <button id="restart-btn" class="hidden">Restart Quiz</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
