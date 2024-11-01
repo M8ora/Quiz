@@ -62,8 +62,8 @@ const questions = [
     { question: "The core of any animation dictating each segment of time and movement.", options: ["Keyframe", "Frame", "Span Frame"], correct: 1 },
     { question: "Frame where a new symbol instance appears in the timeline", options: ["Keyframe", "Frame", "Span Frame"], correct: 0 },
     { question: "Frame selection allows you to select a range of frames between two keyframes with a single click", options: ["Span", "Tweened Frame span", "Static frame span"], correct: 0 },
-    { question: "You can use this type of span for animations.", options: ["Span", "Tweened frame span", "Static Frame span"], correct: 1 },
-    { question: "The platform type of character animation", options: ["HTML5 canvas", ".fla", "Actionscipt3.0", "Actionscip2.0"], correct: 0 },
+    { question: "You can use this type of span for animations.", options: ["Span", "Tweened frame span", "Static Frame span"], correct: 2 },
+    { question: "The platform type of character animation", options: ["HTML5 canvas", ".fla", "Actionscipt3.0", "Actionscip2.0"], correct: 2 },
 ];
 
 let currentQuestionIndex = 0;
