@@ -70,7 +70,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 const userAnswers = [];
 let currentPage = 0;
-const itemsPerPage = 3;
+const itemsPerPage = 5;
 
 // HTML elements
 const questionContainer = document.getElementById("question-container");
@@ -96,10 +96,11 @@ function loadQuestion() {
         showResults();
         return;
     }
-    
+
+    const questionNumber = currentQuestionIndex + 1;
     const question = questions[currentQuestionIndex];
     questionContainer.innerHTML = `
-        <h3>${question.question}</h3>
+        <h4>${questionNumber}: ${question.question}</h4>
         ${question.options.map((option, index) => `
             <label>
                 <input type="radio" name="answer" value="${index}">
@@ -144,13 +145,16 @@ function showResults() {
 
 // Display items on the current page
 function displayPage(page) {
-    reviewAnswers.innerHTML = userAnswers.slice(page * itemsPerPage, (page + 1) * itemsPerPage).map(answer => `
-        <div class="answer-box">
-            <p><strong>Question:</strong> ${answer.question}</p>
-            <p><strong>Your answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
-            <p><strong>Correct answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
-        </div>
-    `).join('');
+    reviewAnswers.innerHTML = userAnswers.slice(page * itemsPerPage, (page + 1) * itemsPerPage).map((answer, index) => {
+        const questionNumber = page * itemsPerPage + index + 1;
+        return `
+            <div class="answer-box">
+                <p><strong>Question ${questionNumber}:</strong> ${answer.question}</p>
+                <p><strong>Your answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
+                <p><strong>Correct answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
+            </div>
+        `;
+    }).join('');
 }
 
 // Update pagination button visibility
