@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #aac5ec;
+    background: #9dbae6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Label and input styling */
 label {
     display: block;
     margin: 10px 0;
@@ -65,7 +64,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Hide elements */
 .hidden {
     display: none;
 }
@@ -152,12 +150,10 @@ button:hover {
     background-color: #c9302c;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .quiz-container {
         padding: 15px 20px;
-        width: 100%;
-        max-width: 400px;
     }
 
     .quiz-container h3 {
@@ -171,7 +167,6 @@ button:hover {
     button {
         font-size: 14px;
         padding: 10px 15px;
-        max-width: 100%;
     }
 
     #pagination-controls button {
@@ -184,30 +179,18 @@ button:hover {
         font-size: 15px;
     }
 }
-
-@media (max-width: 480px) {
-    .quiz-container {
-        padding: 10px 15px;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .quiz-container h3 {
-        font-size: 1rem;
-    }
-
-    label {
-        font-size: 0.9rem;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    #pagination-controls button,
-    #restart-btn {
-        font-size: 13px;
-        padding: 8px 10px;
-    }
+/* Background watermark styling */
+body::before {
+    content: "DCIT 26"; /* Replace with desired watermark text */
+    position: absolute;
+    top: 30%;  /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to stay centered */
+    font-size: 5rem; /* Adjust size as needed */
+    color: rgba(0, 0, 0, 0.219); /* Light opacity for a subtle watermark */
+    font-weight: bold;
+    z-index: -1; /* Ensures it stays behind all content */
+    white-space: nowrap; /* Prevents text wrapping */
+    pointer-events: none; /* Ensures no interaction with the watermark */
+    user-select: none; /* Prevents the watermark from being selected */
 }
