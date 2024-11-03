@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cha.css">
 </head>
 <body>
+
+    <!-- Header with navigation buttons -->
+    <header class="header">
+            <a href="index.html"><button class="header-btn">DCIT 26</button></a>
+            <a href="serie.html"><button class="header-btn">InfoSec</button></a>
+            <a href="Jang.html"><button class="header-btn">Jarijang</button></a>
+            <a href="Barabat.html"><button class="header-btn">Barabat</button></a>
+        </header>
+
+    <!-- Selection Screen -->
+    <div id="selection-screen" class="selection-screen">
+        <h2>Select Number of Questions</h2>
+        <button class="selection-btn" onclick="startQuiz(20)">20 Questions</button>
+        <button class="selection-btn" onclick="startQuiz(30)">30 Questions</button>
+        <button class="selection-btn" onclick="startQuiz(50)">50 Questions</button>
+        <button class="selection-btn" onclick="startQuiz('max')">Max Questions</button>
+    </div>
+
     <!-- Quiz Container -->
-    <div class="quiz-container">
+    <div id="quiz-container" class="quiz-container hidden">
         <!-- Question Container -->
         <div id="question-container"></div>
         
