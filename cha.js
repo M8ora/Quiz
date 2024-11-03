@@ -66,9 +66,35 @@ const questions = [
     { question: "Group meetings to gather diverse perspectives", options: ["Focus Groups", "Interviews", "Document Analysis"], correct: 0 },
     { question: "Reviewing existing documentation", options: ["Focus Groups", "Interviews", "Document Analysis"], correct: 2 },
     { question: "Creating a basic version of the system to gather feedback.", options: ["Duplication", "Prototyping", "Paradigm"], correct: 1 },
+    { question: "It is a crucial discipline in the Unified Process (UP), particularly in the Inception phase. <br> It involves documenting business processes using business use cases, ensuring a common understanding among stakeholders of what business processes need to be supported in the organization.", options: ["ERD", "Business modeling", "Unified Process Design", "Deployment in Unified Process"], correct: 1 },
+    { question: "It ensures a shared understanding among stakeholders of the organization’s business processes and requirements.", options: ["Common Understanding", "Requirements Definition", "Architecture Alignment"], correct: 0 },
+    { question: "Business use cases provide a foundation for defining functional and non-functional requirements.", options: ["Common Understanding", "Requirements Definition", "Architecture Alignment"], correct: 1 },
+    { question: "By understanding the business processes and requirements, the development team can identify and mitigate risks early in the project lifecycle.", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 0 },
+    { question: "The UP emphasizes the importance of requirements engineering, which involves understanding client needs, identifying functional and non-functional requirements, and specifying them in a clear and concise manner.", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 1 },
+    { question: "It is a fundamental concept in the Unified Process, used to capture and manage functional requirements. ", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 2 },
+    { question: "It involves identifying and analyzing the requirements, including functional and non-functional requirements, to ensure a deep understanding of the system’s needs", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 0 },
+    { question: "It involves documenting the requirements in a clear and concise manner, using techniques such as use cases, user stories, and requirements models.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 2 },
+    { question: "It involves ensuring that the developed system meets the specified requirements, through testing and validation activities.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 1 },
+    { question: "It involves updating and refining the requirements throughout the development lifecycle, as changes occur or new requirements emerge.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 2 },
+    { question: "It emphasizes the importance of design as a critical component of the software development lifecycle. Design is integrated throughout the four phases of the UP: Inception, Elaboration, Construction, and Transition.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process", "Deployment in Unified Process"], correct: 0 },
+    { question: "The Unified Process (UP) is an iterative and incremental software development process framework.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process"], correct: 1 },
+    { question: "Establish the viability of the proposed system by defining the scope, 	outlining a candidate architecture, identifying critical risks, and making a 	business case.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 0 },
+    { question: "Expand the candidate architecture into a full architectural baseline, 	finalize the business case, and prepare a project plan.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 1 },
+    { question: "Build the system iteratively and incrementally, focusing on 	addressing critical risks early in the project life cycle. Each iteration results in 	an 	executable release of the software.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 2 },
+    { question: "Roll out the fully functional system to customers, correcting defects 	and modifying the system to address previously unidentified problems.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 3 },
+    { question: "The Unified Process (UP) emphasizes iterative and incremental development, which involves testing throughout the development lifecycle.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process", "Deployment in Unified Process"], correct: 2 },
+    
+    // Lesson 3
 
-    // Continue here
-
+    { question: "It is a structured framework that outlines the phases involved in developing information systems.", options: ["LSDC", "SDLC", "SLDC"], correct: 2 },
+    { question: "It is the structured framework used to conceptualize the system's components and how they interact.", options: ["System Architecture", "System Design"], correct: 0 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
+    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
     // Add more questions as needed
 ];
 
@@ -77,8 +103,11 @@ let score = 0;
 const userAnswers = [];
 let currentPage = 0;
 const itemsPerPage = 5;
+let selectedQuestions = []; // Array to hold the subset of questions based on selection
 
 // HTML elements
+const selectionScreen = document.getElementById("selection-screen");
+const quizContainer = document.getElementById("quiz-container");
 const questionContainer = document.getElementById("question-container");
 const submitBtn = document.getElementById("submit-btn");
 const resultContainer = document.getElementById("result-container");
@@ -88,7 +117,30 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
 
-// Shuffle questions
+// Function to start quiz with selected number of questions
+function startQuiz(numQuestions) {
+    shuffleQuestions();
+    
+    // Determine the subset of questions to use
+    if (numQuestions === 'max') {
+        selectedQuestions = [...questions];
+    } else {
+        selectedQuestions = questions.slice(0, numQuestions);
+    }
+
+    // Hide selection screen and show quiz container
+    selectionScreen.classList.add("hidden");
+    quizContainer.classList.remove("hidden");
+
+    // Reset quiz state
+    currentQuestionIndex = 0;
+    score = 0;
+    userAnswers.length = 0;
+    
+    loadQuestion();
+}
+
+// Shuffle questions randomly
 function shuffleQuestions() {
     for (let i = questions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -98,13 +150,13 @@ function shuffleQuestions() {
 
 // Load question
 function loadQuestion() {
-    if (currentQuestionIndex >= questions.length) {
+    if (currentQuestionIndex >= selectedQuestions.length) {
         showResults();
         return;
     }
 
     const questionNumber = currentQuestionIndex + 1;
-    const question = questions[currentQuestionIndex];
+    const question = selectedQuestions[currentQuestionIndex];
     questionContainer.innerHTML = `
         <h4>${questionNumber}: ${question.question}</h4>
         ${question.options.map((option, index) => `
@@ -121,7 +173,7 @@ submitBtn.addEventListener("click", () => {
     const selectedOption = document.querySelector('input[name="answer"]:checked');
     if (selectedOption) {
         const answer = parseInt(selectedOption.value);
-        const question = questions[currentQuestionIndex];
+        const question = selectedQuestions[currentQuestionIndex];
         
         // Track answer and score
         userAnswers.push({ question: question.question, selected: answer, correct: question.correct });
@@ -143,7 +195,7 @@ function showResults() {
     submitBtn.classList.add("hidden");
     resultContainer.classList.remove("hidden");
     restartBtn.classList.remove("hidden");
-    scoreElement.textContent = `${score} / ${questions.length}`;
+    scoreElement.textContent = `${score} / ${selectedQuestions.length}`;
     
     displayPage(currentPage);
     updatePaginationButtons();
@@ -156,8 +208,8 @@ function displayPage(page) {
         return `
             <div class="answer-box">
                 <p><strong>Question ${questionNumber}:</strong> ${answer.question}</p>
-                <p><strong>Your answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
-                <p><strong>Correct answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
+                <p><strong>Your answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
+                <p><strong>Correct answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
             </div>
         `;
     }).join('');
@@ -188,20 +240,12 @@ nextBtn.addEventListener("click", () => {
 
 // Restart quiz functionality
 restartBtn.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    userAnswers.length = 0;
-    currentPage = 0;
-    
-    questionContainer.classList.remove("hidden");
-    submitBtn.classList.remove("hidden");
+    // Reset and show the selection screen again
+    quizContainer.classList.add("hidden");
     resultContainer.classList.add("hidden");
     restartBtn.classList.add("hidden");
-    
-    shuffleQuestions();
-    loadQuestion();
+    selectionScreen.classList.remove("hidden");
 });
 
-// Initialize quiz
+// Initialize quiz with question selection
 shuffleQuestions();
-loadQuestion();
