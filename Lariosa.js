@@ -71,8 +71,11 @@ let score = 0;
 const userAnswers = [];
 let currentPage = 0;
 const itemsPerPage = 5;
+let selectedQuestions = []; // Array to hold the subset of questions based on selection
 
 // HTML elements
+const selectionScreen = document.getElementById("selection-screen");
+const quizContainer = document.getElementById("quiz-container");
 const questionContainer = document.getElementById("question-container");
 const submitBtn = document.getElementById("submit-btn");
 const resultContainer = document.getElementById("result-container");
@@ -82,7 +85,30 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
 
-// Shuffle questions
+// Function to start quiz with selected number of questions
+function startQuiz(numQuestions) {
+    shuffleQuestions();
+    
+    // Determine the subset of questions to use
+    if (numQuestions === 'max') {
+        selectedQuestions = [...questions];
+    } else {
+        selectedQuestions = questions.slice(0, numQuestions);
+    }
+
+    // Hide selection screen and show quiz container
+    selectionScreen.classList.add("hidden");
+    quizContainer.classList.remove("hidden");
+
+    // Reset quiz state
+    currentQuestionIndex = 0;
+    score = 0;
+    userAnswers.length = 0;
+    
+    loadQuestion();
+}
+
+// Shuffle questions randomly
 function shuffleQuestions() {
     for (let i = questions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -92,13 +118,13 @@ function shuffleQuestions() {
 
 // Load question
 function loadQuestion() {
-    if (currentQuestionIndex >= questions.length) {
+    if (currentQuestionIndex >= selectedQuestions.length) {
         showResults();
         return;
     }
 
     const questionNumber = currentQuestionIndex + 1;
-    const question = questions[currentQuestionIndex];
+    const question = selectedQuestions[currentQuestionIndex];
     questionContainer.innerHTML = `
         <h4>${questionNumber}: ${question.question}</h4>
         ${question.options.map((option, index) => `
@@ -115,7 +141,7 @@ submitBtn.addEventListener("click", () => {
     const selectedOption = document.querySelector('input[name="answer"]:checked');
     if (selectedOption) {
         const answer = parseInt(selectedOption.value);
-        const question = questions[currentQuestionIndex];
+        const question = selectedQuestions[currentQuestionIndex];
         
         // Track answer and score
         userAnswers.push({ question: question.question, selected: answer, correct: question.correct });
@@ -137,7 +163,7 @@ function showResults() {
     submitBtn.classList.add("hidden");
     resultContainer.classList.remove("hidden");
     restartBtn.classList.remove("hidden");
-    scoreElement.textContent = `${score} / ${questions.length}`;
+    scoreElement.textContent = `${score} / ${selectedQuestions.length}`;
     
     displayPage(currentPage);
     updatePaginationButtons();
@@ -150,8 +176,8 @@ function displayPage(page) {
         return `
             <div class="answer-box">
                 <p><strong>Question ${questionNumber}:</strong> ${answer.question}</p>
-                <p><strong>Your answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
-                <p><strong>Correct answer:</strong> ${questions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
+                <p><strong>Your answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
+                <p><strong>Correct answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
             </div>
         `;
     }).join('');
@@ -182,20 +208,12 @@ nextBtn.addEventListener("click", () => {
 
 // Restart quiz functionality
 restartBtn.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    userAnswers.length = 0;
-    currentPage = 0;
-    
-    questionContainer.classList.remove("hidden");
-    submitBtn.classList.remove("hidden");
+    // Reset and show the selection screen again
+    quizContainer.classList.add("hidden");
     resultContainer.classList.add("hidden");
     restartBtn.classList.add("hidden");
-    
-    shuffleQuestions();
-    loadQuestion();
+    selectionScreen.classList.remove("hidden");
 });
 
-// Initialize quiz
+// Initialize quiz with question selection
 shuffleQuestions();
-loadQuestion();
