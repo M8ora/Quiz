@@ -7,33 +7,75 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #aac5ec;
+    background: #54acac;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack header at the top, quiz below */
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
     padding: 0 10px;
 }
 
-/* Quiz container styles */
+/* Header styling */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #56a3b1;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.header-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin: 0 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Watermark styling */
+body::before {
+    content: "DCIT 26";
+    position: absolute;
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: rgba(0, 0, 0, 0.219);
+    font-weight: bold;
+    z-index: -1;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Center the quiz container */
 .quiz-container {
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: 100%;
     max-width: 500px;
+    width: 100%;
     padding: 20px 30px;
     text-align: center;
+    margin-top: 20px;
 }
 
+/* Quiz content styles */
 .quiz-container h3 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 1rem;
 }
 
-/* Label and input styling */
 label {
     display: block;
     margin: 10px 0;
@@ -46,7 +88,7 @@ input[type="radio"] {
     margin-right: 8px;
 }
 
-/* Button styling */
+/* General button styling */
 button {
     background-color: #4CAF50;
     color: white;
@@ -65,7 +107,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Hide elements */
 .hidden {
     display: none;
 }
@@ -85,7 +126,7 @@ button:hover {
     color: #4CAF50;
 }
 
-/* Styles for answer review box */
+/* Answer review box styles */
 .answer-box {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -101,15 +142,15 @@ button:hover {
 
 .answer-box p:nth-child(3) {
     font-weight: bold;
-    color: #4CAF50; /* Green for correct answers */
+    color: #4CAF50;
 }
 
 .answer-box p:nth-child(2) {
     font-weight: bold;
-    color: #e74c3c; /* Red for user answer (if incorrect) */
+    color: #e74c3c;
 }
 
-/* Styles for pagination controls */
+/* Pagination controls */
 #pagination-controls {
     margin-top: 15px;
     display: flex;
@@ -152,12 +193,10 @@ button:hover {
     background-color: #c9302c;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .quiz-container {
         padding: 15px 20px;
-        width: 100%;
-        max-width: 400px;
     }
 
     .quiz-container h3 {
@@ -171,7 +210,6 @@ button:hover {
     button {
         font-size: 14px;
         padding: 10px 15px;
-        max-width: 100%;
     }
 
     #pagination-controls button {
@@ -185,29 +223,46 @@ button:hover {
     }
 }
 
-@media (max-width: 480px) {
-    .quiz-container {
-        padding: 10px 15px;
-        width: 100%;
-        max-width: 100%;
-    }
+/* Background watermark styling */
+body::before {
+    content: "DCIT 26"; /* Replace with desired watermark text */
+    position: absolute;
+    top: 50%;  /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to stay centered */
+    font-size: 5rem; /* Adjust size as needed */
+    color: rgba(0, 0, 0, 0.158); /* Light opacity for a subtle watermark */
+    font-weight: bold;
+    z-index: -1; /* Ensures it stays behind all content */
+    white-space: nowrap; /* Prevents text wrapping */
+    pointer-events: none; /* Ensures no interaction with the watermark */
+    user-select: none; /* Prevents the watermark from being selected */
+}
+/* Selection screen styles */
+.selection-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
 
-    .quiz-container h3 {
-        font-size: 1rem;
-    }
+.selection-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
 
-    label {
-        font-size: 0.9rem;
-    }
+.selection-btn:hover {
+    background-color: #45a049;
+}
 
-    button {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    #pagination-controls button,
-    #restart-btn {
-        font-size: 13px;
-        padding: 8px 10px;
-    }
+.hidden {
+    display: none;
 }
