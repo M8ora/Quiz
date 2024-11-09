@@ -1,0 +1,145 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #f0f4f8; 
+    color: #333; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+
+header {
+    width: 100%;
+    max-width: 900px;
+    padding: 10px 20px;
+    background-color: #4a90e2; 
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container h1 {
+    font-size: 1.5em;
+}
+
+
+.nav-options ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-options ul li {
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#burger-menu {
+    display: none;
+    width: 30px;
+    cursor: pointer;
+}
+
+
+main {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#reviewer-list {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#reviewer-list div {
+    text-align: center;
+    padding: 15px 0;
+    margin: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#reviewer-list h3 {
+    font-size: 1.2em;
+    color: #4a90e2;
+}
+
+#reviewer-list p {
+    font-size: 1em;
+    color: #555;
+}
+
+
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #357ab8;
+}
+
+
+@media screen and (max-width: 600px) {
+    .nav-options {
+        display: none;
+    }
+
+    #burger-menu {
+        display: block;
+    }
+
+    .nav-options.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: #4a90e2;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-options ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-options ul li {
+        text-align: center;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
