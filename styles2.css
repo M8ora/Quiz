@@ -1,15 +1,14 @@
-
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Open Sans', Arial, sans-serif;
-    background-color: #f0f4f8; 
-    color: #333; 
+    background-color: #bcdaf8;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +21,7 @@ header {
     width: 100%;
     max-width: 900px;
     padding: 10px 20px;
-    background-color: #4a90e2; 
+    background-color: #4a90e2;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -30,28 +29,20 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .nav-container h1 {
     font-size: 1.5em;
 }
-
-
 .nav-options ul {
     display: flex;
     gap: 15px;
     list-style: none;
 }
-
-.nav-options ul li {
-    font-size: 1em;
-    cursor: pointer;
-}
-
 #burger-menu {
     display: none;
     width: 30px;
     cursor: pointer;
 }
-
 
 main {
     width: 100%;
@@ -67,9 +58,15 @@ main {
 #reviewer-list {
     width: 100%;
     padding: 20px;
-    background: #fff;
+    background: #f5e3e3;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#reviewer-list p {
+    font-size: 1em;
+    color: #555;
+    text-align: justify;
 }
 
 #reviewer-list div {
@@ -79,14 +76,26 @@ main {
     border-bottom: 1px solid #e0e0e0;
 }
 
-#reviewer-list h3 {
-    font-size: 1.2em;
-    color: #4a90e2;
+
+.line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
-#reviewer-list p {
-    font-size: 1em;
-    color: #555;
+.see-more-btn {
+    background: none;
+    border: none;
+    color: #4894f1;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 5px;
+    
+}
+
+.see-more-btn:hover {
+    text-decoration: underline;
 }
 
 
@@ -108,20 +117,13 @@ button {
     transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: #357ab8;
-}
-
-
 @media screen and (max-width: 600px) {
     .nav-options {
         display: none;
     }
-
     #burger-menu {
         display: block;
     }
-
     .nav-options.active {
         display: block;
         position: absolute;
@@ -131,15 +133,8 @@ button:hover {
         padding: 10px;
         border-radius: 8px;
     }
-
     .nav-options ul {
         flex-direction: column;
         gap: 10px;
-    }
-
-    .nav-options ul li {
-        text-align: center;
-        padding: 5px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
