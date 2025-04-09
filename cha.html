@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Reviewer</title>
+    <link rel="stylesheet" href="2nd_Rev.css">
+</head>
+<body>
+
+    
+    <nav>
+        <div class="menu-container">
+            <div class="logo">Quiz Reviewer</div>
+            <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+            <ul class="nav-links">
+
+                <li class="dropdown">
+                    <a href="cha.html">Costello</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadQuestions('PHP')">PHP Basics</a></li>
+                        <li><a href="#" onclick="loadQuestions('CASTING')">Casting</a></li>
+                        <li><a href="#" onclick="loadQuestions('ARRAYS')">Arrays</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="Balansag.html">Balansag</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadQuestions('HCI')">Human-Computer Interaction</a></li>
+                        <li><a href="#" onclick="loadQuestions('Research')">User Research</a></li>
+                        <li><a href="#">?</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="Akahori.html">Akahori</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadQuestions('Security')">Security</a></li>
+                        <li><a href="#" onclick="loadQuestions('Threats')">Threats</a></li>
+                        <li><a href="#" onclick="loadQuestions('Application')">Application</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="barabat.html">Barabat</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadQuestions('weekTwo')">Week Two</a></li>
+                        <li><a href="#" onclick="loadQuestions('weekThree')">Week Three</a></li>
+                        <li><a href="#" onclick="loadQuestions('weekFour')">Week Four</a></li>
+                        <li><a href="#" onclick="loadQuestions('weekFive')">Week Five</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Peñaranda</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">??</a></li>
+                        <li><a href="#">??</a></li>
+                        <li><a href="#">??</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+        <div id="setup"><br><br><br><br><br><br><br><br><br>
+            <h2>Select Number of Questions</h2>
+            <div class="button-group">
+                <button onclick="startQuiz(10)">10 Questions</button>
+                <button onclick="startQuiz(20)">20 Questions</button>
+                <button onclick="startQuiz(30)">30 Questions</button>
+            </div>
+        </div>
+
+        <div id="quiz-container" style="display: none;">
+            <div id="questions"></div>
+            <div class="pagination">
+                <button id="prev" onclick="prevPage()">Prev</button>
+                <button id="next" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <div id="results-container" style="display: none;"></div>
+    </main>
+
+    <script src="cha.js"></script>
+</body>
+</html>

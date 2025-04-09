@@ -1,251 +1,469 @@
-// Array of questions with answers
-const questions = [
-    { question: "It is	an	organized	collection	of	interrelated	components	that function together to perform a task or meet an objective.", options: ["System", "Hardware", "Software", "Application"], correct: 0 },
-    { question: "The key feature of a system is _____, each component plays a role, and changing one component can affect the entire system.", options: ["Independent", "Interdependent", "Dependent"], correct: 1 },
-    { question: "Every  system  has  a  specific  goal", options: ["Structure", "Interralation", "Purpose", "Diagram"], correct: 2 },
-    { question: "The system has a defined arrangement of components", options: ["Structure", "Interralation", "Purpose", "Diagram"], correct: 0 },
-    { question: "Components are linked and interact with each other", options: ["Structure", "Interralation", "Purpose", "Diagram"], correct: 1 },
-    { question: "Visual representation of a system with components like input", options: ["Structure", "Interralation", "Purpose", "Diagram"], correct: 3 },
-    { question: "These are qualities or features that define the system’s overall behavior.", options: ["System Properties", "System Attributes", "System Characters", "System Roles"], correct: 1 },
-    { question: "Systems may be simple (few components) or complex (many interconnected components).", options: ["Complexity", "Adaptability", "Efficiency"], correct: 0 },
-    { question: "It is how well the system uses resources to perform tasks", options: ["Complexity", "Adaptability", "Efficiency"], correct: 2 },
-    { question: "It is the ability to adjust to changes in the environment or user requirements", options: ["Complexity", "Adaptability", "Efficiency"], correct: 1 },
-    { question: "These are inherent traits of the system, often measurable, and define its stability and reliability.", options: ["System Properties", "System Attributes", "System Characters", "System Roles"], correct: 0 },
-    { question: "This is the observable behaviors that help users or developers understand the system’s functionality.", options: ["System Properties", "System Attributes", "System Characters", "System Roles"], correct: 2 },
-    { question: "It refer  to  the  specific  responsibilities  that  each  component  of  the system carries to ensure that the overall system functions efficiently and meets its goals.", options: ["System Properties", "System Attributes", "System Characters", "System Roles"], correct: 3 },
-    { question: "It is the system’s ability to perform its intended function under specified conditions", options: ["Reliability","Maintainability", "Security"], correct: 0 },
-    { question: "It is how easily a system can be repaired or updated", options: ["Reliability","Maintainability", "Security"], correct: 1 },
-    { question: "Measures in place to protect data and system integrity", options: ["Reliability","Maintainability", "Security"], correct: 2 },
-    { question: "It is how quickly the system responds to inputs or commands", options: ["Accuracy", "Responsiveness", "User-Friendliness"], correct: 1 },
-    { question: "It is how easy it is for users to interact with the system", options: ["Accuracy", "Responsiveness", "User-Friendliness"], correct: 2 },
-    { question: "These components are responsible for accepting data or information from external sources.", options: ["Input Roles", "Processing   Roles", "Output Roles", "Control/Feedback  Roles"], correct: 0 },
-    { question: "These   components   perform   the   actual   processing   or transformation of input data into meaningful output.", options: ["Input Roles", "Processing   Roles", "Output Roles", "Control/Feedback  Roles"], correct: 1 },
-    { question: "These components deliver the results of the processed data back to the user.", options: ["Input Roles", "Processing   Roles", "Output Roles", "Control/Feedback  Roles"], correct: 2 },
-    { question: "These  components  monitor  and  regulate  the  system’s operations to ensure that it is working as expected.", options: ["Input Roles", "Processing   Roles", "Output Roles", "Control/Feedback  Roles"], correct: 3 },
-    { question: "It refers  to  how  well  a  system  meets  the  users'  and stakeholders'  expectations  and  requirements.", options: ["System Roles", "System Character", "System Acceptability"], correct: 2 },
-    { question: "The system must be intuitive and easy for users to navigate.", options: ["Usability", "Compliance", "Security", "Performance"], correct: 0 },
-    { question: "The system	should perform	its	functions	efficiently	and	within acceptable time limits.", options: ["Usability", "Compliance", "Security", "Performance"], correct: 3 },
-    { question: "Adequate measures must be in place to protect data from unauthorized access or breaches.", options: ["Usability", "Compliance", "Security", "Performance"], correct: 2 },
-    { question: "The system should meet industry standards, regulations, and legal requirements.", options: ["Usability", "Compliance", "Security", "Performance"], correct: 1 },
-    { question: "The ability to dissect problems, break them down into manageable components, and analyze data.", options: ["Analytical Thinking", "Technical Knowledge", "Communication"], correct: 0 },
-    { question: "Proficiency in programming, databases, and  network systems to understand how components interact within the system.", options: ["Analytical Thinking", "Technical Knowledge", "Communication"], correct: 1 },
-    { question: "The  ability  to  explain  technical  concepts  to  non-technical stakeholders, ensuring that everyone involved understands the requirements.", options: ["Analytical Thinking", "Technical Knowledge", "Communication"], correct: 2 },
-    { question: "One of the Roles of a System Analyst, offers expert advice on system design and development.", options: ["Consultant", "Problem Solver", "Project Manager"], correct: 0 },
-    { question: "One of the Roles of a System Analyst, identifies inefficiencies or challenges in existing systems and develops solutions.", options: ["Consultant", "Problem Solver", "Project Manager"], correct: 1 },
-    { question: "One of the Roles of a System Analyst, Oversees the implementation of systems, ensuring projects stay on track and within budget.", options: ["Consultant", "Problem Solver", "Project Manager"], correct: 2 },
-    { question: "a professional who assesses business problems and designs systems solutions to address those issues. They act as a bridge between the business needs and the IT solutions.", options: ["Consultant", "System Analyst", "Project Manager"], correct: 1 },
-    
-    //Lesson 2
-
-    { question: "It ensures that the project addresses the true needs of the business and users. It involves identifying, analyzing, and documenting the requirements for the system.", options: ["Requirements Discipline", " Define Requirement", "Evaluate Requirements with Users"], correct: 0 },
-    { question: "Collect all relevant information about the system’s needs, functions, and constraints.", options: ["Gathered Information", " Define Requirement", "Prioritize Requirement"], correct: 0 },
-    { question: "Clarify and formalize the requirements based on the gathered information", options: ["Gathered Information", " Define Requirement", "Prioritize Requirement"], correct: 1 },
-    { question: "Rank the requirements based on factors like business value, feasibility, and urgency.", options: ["Gathered Information", " Define Requirement", "Prioritize Requirement"], correct: 2 },
-    { question: "Design the interaction between users and the system. These dialogs help visualize how users will interact with the system.", options: [" Prioritize Requirement", "Develop User Interface Dialogs", "Evaluate Requirements with Users"], correct: 1 },
-    { question: "Validate the gathered and defined requirements with the end-users to ensure accuracy and completeness.", options: [" Prioritize Requirement", "Develop User Interface Dialogs", "Evaluate Requirements with Users"], correct: 2 },
-    { question: "What is/are the best technique to gather information?", options: ["Interviews", "Surveys/Questionnaires", "Observations", "All of the above"], correct: 3 },
-    { question: "Types of Requirements. Describe what the system should do", options: ["Functional Requirements", "Non-Functional Requirements"], correct: 0 },
-    { question: "Types of Requirements. Outline how the system should behave", options: ["Functional Requirements", "Non-Functional Requirements"], correct: 1 },
-    { question: "Techniques for Prioritizing requirements. : Categorizes requirements into 'Must have,' 'Should have,' 'Could have,' and 'Won't have.' ", options: ["Slovin Method", "MoSCoW Method", "Must-Should Method"], correct: 1 },
-    { question: "Techniques for DEVELOP USER INTERFACE DIALOGS. Creating mock-ups of screens to simulate user interaction.", options: ["Prototyping", "Duplicating", "Wireframing"], correct: 0 },
-    { question: "Techniques for DEVELOP USER INTERFACE DIALOGS. Basic structural layouts of user interfaces.", options: ["Prototyping", "Duplicating", "Wireframing"], correct: 2 },
-    { question: "Methods for Evaluating Requirements with Users. Involving users in testing prototypes or systems against their needs.", options: ["Face-to-face Interviews", "User Acceptance Testing", "Feedback Checking", "Focus Group"], correct: 1 },
-    { question: "Methods for Evaluating Requirements with Users. Group discussions with stakeholders to refine requirements.", options: ["Face-to-face Interviews", "User Acceptance Testing", "Feedback Checking", "Focus Group"], correct: 3 },
-    { question: "It specify the detailed functionalities and constraints of the system", options: ["Business Requirements", "Functional requirements", "System requirements"], correct: 2 },
-    { question: "Have high-level goals and objectives", options: ["Business Requirements", "Functional requirements", "Non-Functional requirements"], correct: 0 },
-    { question: "Detailed actions the system must perform.", options: ["Business Requirements", "Functional requirements", "Non-Functional requirements"], correct: 1 },
-    { question: "Qualities of the system like performance, reliability, and security.", options: ["Business Requirements", "Functional requirements", "Non-Functional requirements"], correct: 2 },
-    { question: "It provide a structured representation of system components and their interactions.", options: ["Models", "Mathematical Models", "Descriptive Models"], correct: 0 },
-    { question: "Uses equations to represent system behavior and relationships.", options: ["Graphical Models", "Mathematical Models", "Descriptive Models"], correct: 1 },
-    { question: "Describe system components, functions, and processes in written or textual form", options: ["Graphical Models", "Mathematical Models", "Descriptive Models"], correct: 2 },
-    { question: "Use visual diagrams to represent system components, data flow, and interactions.", options: ["Graphical Models", "Mathematical Models", "Descriptive Models"], correct: 0 },
-    { question: "Types of Diagram. <br> Show interactions between users and the system.", options: ["Case Diagrams", "Entity-Relationship Diagrams (ERD)", "Data Flow Diagrams (DFD)"], correct: 0 },
-    { question: "Types of Diagram. <br> Visualize how data moves through the system.", options: ["Case Diagrams", "Entity-Relationship Diagrams (ERD)", "Data Flow Diagrams (DFD)"], correct: 2 },
-    { question: "Types of Diagram. <br> Represent data and relationships in databases.", options: ["Case Diagrams", "Entity-Relationship Diagrams (ERD)", "Data Flow Diagrams (DFD)"], correct: 1 },
-    { question: "One-on-one discussions with stakeholders.", options: ["Focus Groups", "Interviews", "Questionaires"], correct: 1 },
-    { question: "Group meetings to gather diverse perspectives", options: ["Focus Groups", "Interviews", "Document Analysis"], correct: 0 },
-    { question: "Reviewing existing documentation", options: ["Focus Groups", "Interviews", "Document Analysis"], correct: 2 },
-    { question: "Creating a basic version of the system to gather feedback.", options: ["Duplication", "Prototyping", "Paradigm"], correct: 1 },
-    { question: "It is a crucial discipline in the Unified Process (UP), particularly in the Inception phase. <br> It involves documenting business processes using business use cases, ensuring a common understanding among stakeholders of what business processes need to be supported in the organization.", options: ["ERD", "Business modeling", "Unified Process Design", "Deployment in Unified Process"], correct: 1 },
-    { question: "It ensures a shared understanding among stakeholders of the organization’s business processes and requirements.", options: ["Common Understanding", "Requirements Definition", "Architecture Alignment"], correct: 0 },
-    { question: "Business use cases provide a foundation for defining functional and non-functional requirements.", options: ["Common Understanding", "Requirements Definition", "Architecture Alignment"], correct: 1 },
-    { question: "By understanding the business processes and requirements, the development team can identify and mitigate risks early in the project lifecycle.", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 0 },
-    { question: "The UP emphasizes the importance of requirements engineering, which involves understanding client needs, identifying functional and non-functional requirements, and specifying them in a clear and concise manner.", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 1 },
-    { question: "It is a fundamental concept in the Unified Process, used to capture and manage functional requirements. ", options: ["Risk Management", "Requirements Discipline", "Use Cases"], correct: 2 },
-    { question: "It involves identifying and analyzing the requirements, including functional and non-functional requirements, to ensure a deep understanding of the system’s needs", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 0 },
-    { question: "It involves documenting the requirements in a clear and concise manner, using techniques such as use cases, user stories, and requirements models.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 2 },
-    { question: "It involves ensuring that the developed system meets the specified requirements, through testing and validation activities.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 1 },
-    { question: "It involves updating and refining the requirements throughout the development lifecycle, as changes occur or new requirements emerge.", options: ["Requirements Analysis", "Requirements Verification", "Requirements Maintenance"], correct: 2 },
-    { question: "It emphasizes the importance of design as a critical component of the software development lifecycle. Design is integrated throughout the four phases of the UP: Inception, Elaboration, Construction, and Transition.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process", "Deployment in Unified Process"], correct: 0 },
-    { question: "The Unified Process (UP) is an iterative and incremental software development process framework.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process"], correct: 1 },
-    { question: "Establish the viability of the proposed system by defining the scope, 	outlining a candidate architecture, identifying critical risks, and making a 	business case.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 0 },
-    { question: "Expand the candidate architecture into a full architectural baseline, 	finalize the business case, and prepare a project plan.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 1 },
-    { question: "Build the system iteratively and incrementally, focusing on 	addressing critical risks early in the project life cycle. Each iteration results in 	an 	executable release of the software.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 2 },
-    { question: "Roll out the fully functional system to customers, correcting defects 	and modifying the system to address previously unidentified problems.", options: ["Inception", "Elaboration", "Construction", "Transition"], correct: 3 },
-    { question: "The Unified Process (UP) emphasizes iterative and incremental development, which involves testing throughout the development lifecycle.", options: ["Unified Process Design", "Unified Process Implementation", "Testing in Unified Process", "Deployment in Unified Process"], correct: 2 },
-    
-    // Lesson 3
-
-    { question: "It is a structured framework that outlines the phases involved in developing information systems.", options: ["LSDC", "SDLC", "SLDC"], correct: 2 },
-    { question: "It is the structured framework used to conceptualize the system's components and how they interact.", options: ["System Architecture", "System Design"], correct: 0 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // { question: "What is 2 + 2?", options: [2, 3, 4, 5], correct: 2 },
-    // Add more questions as needed
-];
-
-let currentQuestionIndex = 0;
-let score = 0;
-const userAnswers = [];
-let currentPage = 0;
-const itemsPerPage = 5;
-let selectedQuestions = []; // Array to hold the subset of questions based on selection
-
-// HTML elements
-const selectionScreen = document.getElementById("selection-screen");
-const quizContainer = document.getElementById("quiz-container");
-const questionContainer = document.getElementById("question-container");
-const submitBtn = document.getElementById("submit-btn");
-const resultContainer = document.getElementById("result-container");
-const scoreElement = document.getElementById("score");
-const reviewAnswers = document.getElementById("review-answers");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
-const restartBtn = document.getElementById("restart-btn");
-
-// Function to start quiz with selected number of questions
-function startQuiz(numQuestions) {
-    shuffleQuestions();
-    
-    // Determine the subset of questions to use
-    if (numQuestions === 'max') {
-        selectedQuestions = [...questions];
-    } else {
-        selectedQuestions = questions.slice(0, numQuestions);
-    }
-
-    // Hide selection screen and show quiz container
-    selectionScreen.classList.add("hidden");
-    quizContainer.classList.remove("hidden");
-
-    // Reset quiz state
-    currentQuestionIndex = 0;
-    score = 0;
-    userAnswers.length = 0;
-    
-    loadQuestion();
-}
-
-// Shuffle questions randomly
-function shuffleQuestions() {
-    for (let i = questions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [questions[i], questions[j]] = [questions[j], questions[i]];
-    }
-}
-
-// Load question
-function loadQuestion() {
-    if (currentQuestionIndex >= selectedQuestions.length) {
-        showResults();
-        return;
-    }
-
-    const questionNumber = currentQuestionIndex + 1;
-    const question = selectedQuestions[currentQuestionIndex];
-    questionContainer.innerHTML = `
-        <h4>${questionNumber}: ${question.question}</h4>
-        ${question.options.map((option, index) => `
-            <label>
-                <input type="radio" name="answer" value="${index}">
-                ${option}
-            </label>
-        `).join('')}
-    `;
-}
-
-// Handle answer submission
-submitBtn.addEventListener("click", () => {
-    const selectedOption = document.querySelector('input[name="answer"]:checked');
-    if (selectedOption) {
-        const answer = parseInt(selectedOption.value);
-        const question = selectedQuestions[currentQuestionIndex];
-        
-        // Track answer and score
-        userAnswers.push({ question: question.question, selected: answer, correct: question.correct });
-        if (answer === question.correct) {
-            score++;
+const questionSets = {
+    PHP: [
+        { 
+            question: "It is similar to that of C and C++ languages, making it accessible for developers familiar with these languages.", 
+            choices: ["MySQL Syntax", "Python Syntax", "PHP Syntax"], 
+            answer: "PHP Syntax"
+        },
+        { 
+            question: "IT is executed on the server and the result is sent to the client as HTML.", 
+            choices: ["HTML/CSS Code", "PHP Syntax", "PHP Code"], 
+            answer: "PHP Code"
+        },
+        { 
+            question: "Statements in PHP are terminated with what?", 
+            choices: ["Semicolon (;)", "Colon (:)", "Bracket ({})"], 
+            answer: "Semicolon (;)"
+        },
+        { 
+            question: "Were created by assigning a value to them using assignment operator (=), and they start with a '$' symbol", 
+            choices: ["Variables", "Array List", "Syntax"], 
+            answer: "Variables"
+        },
+        { 
+            question: "A variable starts with the $ sign, followed by the name of the variable", 
+            choices: ["TRUE", "FALSE"], 
+            answer: "TRUE"
+        },
+        { 
+            question: "A variable name CAN'T start with a letter or the underscore character.", 
+            choices: ["TRUE", "FALSE"], 
+            answer: "FALSE"
+        },
+        { 
+            question: "A variable name CAN start with a number.", 
+            choices: ["TRUE", "FALSE"], 
+            answer: "FALSE"
+        },
+        { 
+            question: "A variable can contain alpha-numeric, special characters and underscores (A-z, *-#, 0-9, and _).", 
+            choices: ["TRUE", "FALSE"], 
+            answer: "FALSE"
+        },
+        { 
+            question: "In PHP, keywords (If, else, while, echo, etc.), classes, functions, and user-defined functions are case-sensitive.", 
+            choices: ["TRUE", "FALSE"], 
+            answer: "FALSE"
+        },
+        { 
+            question: "It can be enclosed in either single quotes ('') or double quotes.", 
+            choices: ["String", "Integer", "Variable"], 
+            answer: "String"
+        },
+        { 
+            question: "It treat everything inside as literal String.", 
+            choices: ["Single quote", "Double quote"], 
+            answer: "Single quote"
+        },
+        { 
+            question: "It allow for variable for interpolation", 
+            choices: ["Single quote", "Double quote"], 
+            answer: "Double quote"
+        },
+        { 
+            question: "This statement is often used to output data to the screen.", 
+            choices: ["echo", "print", "vardump()"], 
+            answer: ""
+        },
+        { 
+            question: "PHP supports comments, which are ignored by the PHP interpreter. Single-line.", 
+            choices: ["/ /", "/* */", "<!-- -->"], 
+            answer: "/ /"
+        },
+        { 
+            question: "PHP supports comments, which are ignored by the PHP interpreter. Multi-line.", 
+            choices: ["/ /", "/* */", "<!-- -->"], 
+            answer: "/* */"
+        },
+        { 
+            question: "It represents the day of the month ( 0 1 to 3 1 ).", 
+            choices: ["D", "d", "day"], 
+            answer: "d"
+        },
+        { 
+            question: "It represents a month (01 to 12).", 
+            choices: ["M", "m", "mons"], 
+            answer: "m"
+        },
+        { 
+            question: "It represents a year (in four digits)", 
+            choices: ["Y", "y", "y-y-y-y"], 
+            answer: "y"
+        },
+        { 
+            question: "It represents the day of the week", 
+            choices: ["L", "i", "l"], 
+            answer: "l"
+        },
+        { 
+            question: "24 - hour format of an hour (00 to 23)", 
+            choices: ["H", "hr", "h"], 
+            answer: "H"
+        },
+        { 
+            question: "12 - hour format of an hour with leading zeros ( 01 to 12)", 
+            choices: ["hr", "h", "H"], 
+            answer: "h"
+        },
+        { 
+            question: "Minutes with leading zeros (00 to 59)", 
+            choices: ["i", "l", "m"], 
+            answer: "i"
+        },
+        { 
+            question: "Seconds with leading zeros (00 to 59)", 
+            choices: ["s", "S", "i"], 
+            answer: "s"
+        },
+        { 
+            question: "Lower case Ante meridiem and Post-meridiem (am or pm)", 
+            choices: ["a", "p", "A"], 
+            answer: "a"
+        },
+        { 
+            question: "These are used to execute code repeatedly", 
+            choices: ["Loops", "Conditions", "Output variables"], 
+            answer: "Loops"
+        },
+        { 
+            question: "There are used with numeric values to perform common arithmetical operations, such as addition, subtraction, multiplication etc", 
+            choices: ["Comparison Operators", "Arithmetic Operators", "Logical Operators"], 
+            answer: "Arithmetic Operators"
+        },
+        { 
+            question: "These are used to compare two values (number or string):", 
+            choices: ["Comparison Operators", "Arithmetic Operators", "Logical Operators"], 
+            answer: "Comparison Operators"
+        },
+        { 
+            question: "These are used to combine conditional statements.", 
+            choices: ["Comparison Operators", "Arithmetic Operators", "Logical Operators"], 
+            answer: "Logical Operators"
+        },
+        { 
+            question: "It has two operators that are specially designed for strings", 
+            choices: ["String Operators", "Arithmetic Operators", "Logical Operators"], 
+            answer: "String Operators"
         }
-        
-        // Move to the next question
-        currentQuestionIndex++;
-        loadQuestion();
-    } else {
-        alert("Please select an answer.");
-    }
+    ],
+    CASTING: [
+        {
+            quetion: "This function returns the length of a String.",
+            choices: ["strlen()", "str_word_count()", "str_replace()"],
+            answers: "strlen()"
+        },
+        { 
+            question: "It extracts a substring from a string based on a specified start and optionally end position.", 
+            choices: ["substr()", "str_replace()", "Strlen()"], 
+            answer: "substr()"
+        },
+        { 
+            question: "It replaces all occurrences of a substring with another substring within a string.", 
+            choices: ["substr()", "strlen()", "str_replace()"], 
+            answer: "str_replace()"
+        },
+        { 
+            question: "It counts the number of words in a string.", 
+            choices: ["strlen()", "str_word_count()", "str_replace()"], 
+            answer: "str_word_count()"
+        },
+        { 
+            question: "Operator for Exponentiation.", 
+            choices: ["%", "**", "*!"], 
+            answer: "**"
+        },
+        { 
+            question: "Operator for Equal.", 
+            choices: ["=", "==", "==="], 
+            answer: "=="
+        },
+        { 
+            question: "Operator for Identical.", 
+            choices: ["=", "==", "==="], 
+            answer: "==="
+        },
+        { 
+            question: "Operator for Not Equal.", 
+            choices: ["!=", "!==", "!=="], 
+            answer: "!="
+        },
+        { 
+            question: "Operator for Pre-increment.", 
+            choices: ["++$x", "$x++", "+Sx"], 
+            answer: "++$x"
+        },
+        { 
+            question: "Operator for Post-increment.", 
+            choices: ["++$x", "$x++", "+$x"], 
+            answer: "$x++"
+        },
+        { 
+            question: "Operator for Pre-decrement.", 
+            choices: ["--$x", "$x--", "-$x"], 
+            answer: "--$x"
+        },
+        { 
+            question: "Operator for Post-increment.", 
+            choices: ["--$x", "$x--", "-$x"], 
+            answer: "$x--"
+        },
+        { 
+            question: "True if either $x or $y is true, but not both.", 
+            choices: ["Xor (xor)", "Or (||)", "Not (!)"], 
+            answer: "Xor (xor)"
+        },
+        { 
+            question: "True if either $x or $y is true.", 
+            choices: ["Xor (xor)", "Or (||)", "Not (!)"], 
+            answer: "Or (||)"
+        },
+        { 
+            question: "Operator for Concatenation.", 
+            choices: ["(.)", "(.=)", "(=.)"], 
+            answer: "(.)"
+        },
+        { 
+            question: "It executes some code if one condition is true", 
+            choices: ["if statement", "if...else statement", "if...elseif...else statement"], 
+            answer: "if statement"
+        },
+        { 
+            question: "It executes some code if a condition is true and another code if that condition is false", 
+            choices: ["if statement", "if...else statement", "if...elseif...else statement"], 
+            answer: "if...else statement"
+        },
+        { 
+            question: "It executes different codes for more than two conditions", 
+            choices: ["if statement", "if...else statement", "if...elseif...else statement"], 
+            answer: "if..elseif...else statement"
+        },
+    ],
+    ARRAYS: [
+        { 
+            question: "It sort Arrays in Ascending order.", 
+            choices: ["sort()", "rsort()"], 
+            answer: "sort()"
+        },
+        { 
+            question: "It sort Arrays in Descending order.", 
+            choices: ["sort()", "rsort()"], 
+            answer: "rsort()"
+        },
+        { 
+            question: "It Compare the values of two arrays and return the Differences.", 
+            choices: ["array_filter()", "array_diff()", "array_intersect()"], 
+            answer: "array_diff()"
+        },
+        { 
+            question: "This function compares the values of two arrays (or more), and returns the matches.", 
+            choices: ["array_filter()", "array_diff()", "array_intersect()"], 
+            answer: "array_intersect()"
+        },
+        { 
+            question: "This function sends each value of an array to a user-made function and returns an array with new values given by the user-made function.", 
+            choices: ["array_map()", "array_filter()", "array_intersect()"], 
+            answer: "array_map()"
+        },
+        { 
+            question: "what is this?", 
+            choices: ["Access Indexed Arrays", "Associative Arrays", "Access Associative Arrays"], 
+            answer: "Access Indexed Arrays",
+            image: "images/AccessIndexed.PNG"
+        },
+        { 
+            question: "Write on Paper. Show the output.", 
+            choices: ["Click if Done",], 
+            answer: "Click if Done",
+            image: "images/changeValueAccessIndexed.PNG"
+        },
+        { 
+            question: "Write on Paper. Show the Syntax for Associative Arrays and Output.", 
+            choices: ["Click if Done"], 
+            answer: "Click if Done",
+            answerImage: "images/AssoArrays.PNG"
+        },
+        { 
+            question: "Write on Paper. Show the syntac for Access Associative Arrays with Output.", 
+            choices: ["Click if Done"], 
+            answer: "Click if Done",
+            answerImage: "images/AccAssoArrays.PNG"
+        },
+        { 
+            question: "Write on Paper. Show the syntac for Change Value Associative Arrays with Output.", 
+            choices: ["Click if Done"], 
+            answer: "Click if Done",
+            answerImage: "images/ChangeValueAccAssoArrays.PNG"
+        },
+        { 
+            question: "Each item has an index number. by default, the first item has index 0, the second item has item 1, etc.", 
+            choices: ["Indexed arrays", "PHP Associative Arrays", "Access Indexed Arrays"], 
+            answer: "Indexed arrays"
+        },
+        { 
+            question: "To access an array item you can refer to the index number.", 
+            choices: ["PHP Associative Arrays", "Indexed arrays", "Access Indexed Arrays"], 
+            answer: "Access Indexed Arrays"
+        },
+        { 
+            question: "These are arrays that use named keys that you assign to them.", 
+            choices: ["PHP Associative Arrays", "Change Value", "Access Indexed Arrays"], 
+            answer: "PHP Associative Arrays"
+        },
+        { 
+            question: "It is a SUPER GLOBAL VARIABLE used to store information on a user to be used across multiple pages.", 
+            choices: ["Sessions", "Variables", "ID"], 
+            answer: "Sessions"
+        },
+        { 
+            question: "It hold information about one single user, and are available to all pages in one application.", 
+            choices: ["Session variables", "Session-Id", "Global variables"], 
+            answer: "Sessions variables"
+        },
+        { 
+            question: "It is assigned to a user.", 
+            choices: ["Session-Id", "Variables", "ID"], 
+            answer: "Session-Id"
+        },
+    ]
+};
+
+let selectedTopic = 'PHP';
+let selectedQuestions = [];
+let userAnswers = [];
+let currentPage = 0;
+
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+}
+
+
+document.querySelectorAll(".dropdown > a").forEach(menu => {
+    menu.addEventListener("click", function (e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            this.parentElement.classList.toggle("active");
+        }
+    });
 });
 
-// Display results with pagination
-function showResults() {
-    questionContainer.classList.add("hidden");
-    submitBtn.classList.add("hidden");
-    resultContainer.classList.remove("hidden");
-    restartBtn.classList.remove("hidden");
-    scoreElement.textContent = `${score} / ${selectedQuestions.length}`;
+function loadQuestions(topic) {
+    selectedTopic = topic;
+    document.getElementById('setup').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('results-container').style.display = 'none';
+}
+
+function shuffleArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function startQuiz(numQuestions) {
+    let questions = [...questionSets[selectedTopic]];
+    shuffleArray(questions);
+    selectedQuestions = questions.slice(0, numQuestions).map(q => ({
+        ...q, choices: shuffleArray([...q.choices])
+    }));
+    userAnswers = new Array(numQuestions).fill(null);
+    currentPage = 0;
+    document.getElementById('setup').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    showPage();
+}
+
+function showPage() {
+    let container = document.getElementById('questions');
+    container.innerHTML = '';
     
-    displayPage(currentPage);
-    updatePaginationButtons();
-}
+    let start = currentPage * 5;
+    let end = Math.min(start + 5, selectedQuestions.length);
 
-// Display items on the current page
-function displayPage(page) {
-    reviewAnswers.innerHTML = userAnswers.slice(page * itemsPerPage, (page + 1) * itemsPerPage).map((answer, index) => {
-        const questionNumber = page * itemsPerPage + index + 1;
-        return `
-            <div class="answer-box">
-                <p><strong>Question ${questionNumber}:</strong> ${answer.question}</p>
-                <p><strong>Your answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.selected]}</p>
-                <p><strong>Correct answer:</strong> ${selectedQuestions[userAnswers.indexOf(answer)].options[answer.correct]}</p>
-            </div>
+    for (let i = start; i < end; i++) {
+        let q = selectedQuestions[i];
+        let qIndex = i;
+        let div = document.createElement('div');
+        div.classList.add("question-card");
+
+        let imgHTML = q.image ? `<img src="${q.image}" class="question-image">` : "";
+        div.innerHTML = `
+            <h3>${qIndex + 1}. ${q.question}</h3>
+            ${imgHTML}
         `;
-    }).join('');
+
+
+        q.choices.forEach(choice => {
+            div.innerHTML += `<label>
+                <input type="radio" name="q${qIndex}" value="${choice}" 
+                ${userAnswers[qIndex] === choice ? 'checked' : ''} 
+                onchange="saveAnswer(${qIndex}, this.value)"> 
+                ${choice}
+            </label>`;
+        });
+
+        container.appendChild(div);
+    }
+
+    document.getElementById('prev').style.display = currentPage === 0 ? 'none' : 'inline-block';
+    document.getElementById('next').innerText = currentPage === Math.ceil(selectedQuestions.length / 5) - 1 ? "Finish" : "Next";
 }
 
-// Update pagination button visibility
-function updatePaginationButtons() {
-    prevBtn.classList.toggle("hidden", currentPage === 0);
-    nextBtn.classList.toggle("hidden", (currentPage + 1) * itemsPerPage >= userAnswers.length);
+function saveAnswer(index, value) {
+    userAnswers[index] = value;
 }
 
-// Pagination event listeners
-prevBtn.addEventListener("click", () => {
+function nextPage() {
+    if (currentPage < Math.ceil(selectedQuestions.length / 5) - 1) {
+        currentPage++;
+        showPage();
+    } else {
+        showResults();
+    }
+}
+
+function prevPage() {
     if (currentPage > 0) {
         currentPage--;
-        displayPage(currentPage);
-        updatePaginationButtons();
+        showPage();
     }
-});
+}
 
-nextBtn.addEventListener("click", () => {
-    if ((currentPage + 1) * itemsPerPage < userAnswers.length) {
-        currentPage++;
-        displayPage(currentPage);
-        updatePaginationButtons();
-    }
-});
+function showResults() {
+    document.getElementById('quiz-container').style.display = 'none';
+    let container = document.getElementById('results-container');
+    container.innerHTML = '';
+    
+    let correctCount = 0;
+    
+    selectedQuestions.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) {
+            correctCount++;
+        }
+    });
 
-// Restart quiz functionality
-restartBtn.addEventListener("click", () => {
-    // Reset and show the selection screen again
-    quizContainer.classList.add("hidden");
-    resultContainer.classList.add("hidden");
-    restartBtn.classList.add("hidden");
-    selectionScreen.classList.remove("hidden");
-});
+    let percentage = Math.round((correctCount / selectedQuestions.length) * 100);
 
-// Initialize quiz with question selection
-shuffleQuestions();
+    container.innerHTML += `
+        <div class="result-summary">
+            <h2>Quiz Completed!</h2>
+            <p>Score: ${correctCount} / ${selectedQuestions.length} (${percentage}%)</p>
+        </div>
+    `;
+
+    selectedQuestions.forEach((q, i) => {
+        let isCorrect = userAnswers[i] === q.answer;
+
+        container.innerHTML += `
+            <div class="result-card">
+                <h3>${i + 1}. ${q.question}</h3>
+                <p class="your-answer">Your Answer: 
+                    <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">
+                        ${userAnswers[i] || 'No Answer'}
+                    </span>
+                </p>
+                <p>Correct Answer:</p>
+                ${q.answerImage ? `<img src="${q.answerImage}" class="answer-image">` : `<p class="correct-answer">${q.answer}</p>`}
+            </div>
+        `;
+    });
+
+    document.getElementById('results-container').style.display = 'block';
+}
